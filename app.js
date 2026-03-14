@@ -2,8 +2,8 @@ const express=require("express")
 const app=express()
 const PORT=5005;
 
-app.listen("/",(req,res)=>{
-    res.send("Hello World")
+app.send("/",(req,res)=>{
+    res.json({message:"Hello World"})
 })
 
 app.listen(PORT,()=>{
