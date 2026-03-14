@@ -2,7 +2,7 @@ const express=require("express")
 const app=express()
 const PORT=5005;
 
-app.send("/",(req,res)=>{
+app.use("/",(req,res)=>{
     res.json({message:"Hello World"})
 })
 
