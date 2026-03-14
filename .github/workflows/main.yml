@@ -33,7 +33,16 @@ jobs:
           port: 22
           script: |
             echo "Starting deployment..."
-            cd Cicd
+            cd ~/Cicd
             git pull origin main
             npm install
-            pm2 start app.js
+
+            if pm2 list | grep -q "app"; then
+              echo "App exists, restarting..."
+              pm2 restart app
+            else
+              echo "App not found, starting..."
+              pm2 start app.js --name app
+            fi
+
+            pm2 save
